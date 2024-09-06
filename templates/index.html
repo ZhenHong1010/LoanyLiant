@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoanyLiant: Loan Eligibility Predictor</title>
+        
+    <!-- Add the favicon link here -->
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./commonStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/aa7454d09f.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        #CommonStyle.processesPic
+
+:root{
+    --black:#000;
+    --white:#ffffff;
+    --lightgrey:#f1f1f1;
+    --darkblue:#0d102c;
+    --primarycolor:#3d51f2;
+    --secondarycolor:#5670ef;
+    --lightDark:#080A25;
+    --darkText:#8388B4;
+ }
+ 
+/* common styles */
+section{
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 2em;
+}
+
+.gridSection{
+    display: grid;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 5em;
+}
+
+#sectionPic{
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
+}
+
+p{
+    color: var(--lightgrey);
+}
+
+.darkPara{
+    color: var(--darkText);
+    font-weight: 500;
+}
+
+.btn{
+    border: 1px solid #fff;
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 1.1rem;
+    padding: .7em 1.5em;
+    cursor: pointer;
+}
+
+.btn1{
+    margin-right: 1em;
+}
+
+.btn2{
+    border: none;
+}
+
+.primaryBtn{
+    background-color: var(--primarycolor);
+}
+
+@keyframes bounce {
+    0% {transform:translateY(-30px);}
+    50% {transform:translateY(30px);}
+    100% { transform:translateY(-30px)}
+  }
+
+.bouncepic img{
+   animation: bounce 15s infinite;    
+}
+
+.sectionHeader{
+    color: var(--white);
+    font-size: 2rem;
+    margin-bottom: .7em;
+}
+
+.sectionPara{
+    font-size: 1.1rem;
+    margin-bottom: 3em;
+}
+
+@media screen and (min-width:800px) {
+    section{
+        width: 85%;
+    }   
+    
+    .gridSection{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width:1000px){
+    .sectionHeader{
+        font-size: 3em;
+    }
+}
+
+        #style.css
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root{
+   --black:#000;
+   --white:#ffffff;
+   --lightgrey:#f1f1f1;
+   --darkblue:#06402b;
+   --primarycolor:#3d51f2;
+   --secondarycolor:#5670ef;
+   --lightDark:#080A25;
+   --darkText:#8388B4;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    color: var(--text-color);
+}
+
+/* Header */
+header{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 1em;
+}
+
+#barContainer{
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav{
+    list-style-type: none;
+    color: var(--white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--lightDark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    z-index: 2;
+}
+
+.navLogo{
+   margin-bottom: 3rem;
+}
+
+.nav-link{
+    font-size: 1rem;
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-link a{
+    color: var(--white);
+}
+
+.sociallinkContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.sociallink{
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+@media screen and (min-width:800px) {
+    .nav{
+        position: relative;
+        width: auto;
+        background-color: transparent;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5%;
+    }
+    .nav-link{
+          margin-right: 2em;
+    }
+    .navLogo,#barContainer,.sociallinkContainer{
+        display: none;
+    }
+}
+
+/* Hero page */
+.headline{
+    color: var(--white);
+    font-size: 3rem;
+    width: 100%;
+}
+
+.Texton{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+.btnContainer{
+    margin-top: 2em;
+}
+
+.fa-play{
+    margin-left: .5em;
+}
+
+.sectionPic{
+    order: 0;
+}
+
+.sectionDesc{
+    order: 1;
+    margin-top: 1em;
+}
+
+@media screen and (min-width:800px) {
+    .sectionPic{
+        order: 1;
+    }
+    
+    .sectionDesc{
+        order: 0;
+    }  
+}
+@media screen and (min-width:1000px){
+    .headline{
+        font-size: 4em;
+    }
+}
+
+/* Feature */
+.FeatureContainer {
+    display: flex;
+    justify-content: space-between; /* Add space between items */
+    gap: 20px; /* Add gap */
+    padding: 20px;
+}
+
+.eachFeature {
+    background-color: var(--lightgrey);
+    display: flex;
+    flex-direction: column; /* Ensure column layout */
+    align-items: center;
+    justify-content: space-between; /* Ensure the button stays at the bottom */
+    padding: 1em;
+    border-radius: 20px;
+    width: 100%;
+    height: 300px;
+}
+
+.FeatureDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligns content and button at the bottom */
+    flex-grow: 1; /* Ensures the button aligns properly */
+    margin-left: 1em;
+    width: 100%;
+}
+
+.FeatureTitle {
+    color: var(--darkblue);
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+}
+
+.FeaturePara {
+    color: var(--lightDark);
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
+.FeatureDiscount {
+    color: var(--primarycolor);
+}
+
+.FeatureBtn {
+    background-color: var(--secondarycolor);
+    margin-top: 20px;
+    text-transform: uppercase;
+    align-self: flex-start; /* Align button to the left */
+}
+
+@media screen and (min-width: 700px) {
+    .FeatureContainer {
+        grid-auto-columns: calc(100% / 2);
+    }
+
+    .eachFeatureBorder {
+        border: 5px solid var(--primarycolor);
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .FeatureContainer {
+        grid-auto-columns: calc(100% / 3);
+    }
+}
+
+
+/* Processes */
+.processessDesc{
+    order: 0;
+}
+
+.processesPic{
+  order: 1;
+}
+
+.eachProcesses{
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.eachProcesses img{
+    margin-right: 2em;
+}
+
+.processTitle{
+    color: var(--white);
+    margin-bottom: 1em;
+}
+
+/* Join Now */
+footer{
+    background-color: var(--lightDark);
+    margin-top: 5em;
+}
+
+.joinSection,.footerlinksContainer{
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1em;
+}
+
+.joinSection{
+    display: flex;
+    align-items: center;
+    padding: 3em 0em;
+}
+
+.joinSection .joinDesc{
+    width: 80%;
+}
+
+.joinSection button{
+    height: auto;
+}
+
+
+
+.footerlinksContainer{
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    justify-content: space-between;
+    padding-top: 5em;
+    border-top: 1px solid var(--lightgrey);
+}
+
+.footersociallinkContainer{
+    margin-top: 1em;
+}
+
+.footerAboutus .sociallinkContainer{
+    justify-content: flex-start;
+}
+
+.footerlink{
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.linkTitle{
+    font-size: 1.5rem;
+    margin-bottom: .5em;
+}
+
+.footerlink a{
+    color: var(--white);
+    margin-bottom: 1em;
+    transition: all .5s ease-in-out;
+}
+
+.footerlink a:hover{
+    transform: translateX(10px);
+}
+
+.footerCopyright{
+    background-color: var(--darkblue);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.footerCopyright p{
+    text-align: center;
+}
+
+.developedBy{
+    font-weight: bold;
+    color: var(--white);
+}
+
+@media screen and (min-width:700px) {
+    .footerlinksContainer{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div id="logo">
+            <a href="./index.html">
+            <img src="{{ url_for('static', filename='img/icon.svg') }}" alt="">
+            </a>
+        </div>
+        <ul class="nav" id="nav">
+            <ul class="navLogo">
+                <a href="./index.html">
+                     <img src="{{ url_for('static', filename='img/logo-white.png') }}" alt="">
+               </a>
+            </ul>
+
+            <li class="nav-link"><a href="./index.html">Home</a></li>
+            <li class="nav-link"><a href="./aboutus.html">About Us</a></li>
+            <li class="nav-link"><a href="./contact.html">Contact</a></li>
+            <li class="sociallinkContainer">
+                <img class="sociallink" src="{{ url_for('static', filename='img/fabook-icon-white.svg') }}" alt="">
+                <img class="sociallink" src="{{ url_for('static', filename='img/twitter-icon-white.svg') }}" alt="">
+                <img class="sociallink" src="{{ url_for('static', filename='img/inkedin-icon-white.svg') }}" alt="">
+                <img class="sociallink" src="{{ url_for('static', filename='img/whatsapp-icon-white.svg') }}" alt="">  
+            </li>
+        </ul>
+        <div id="barContainer">
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero page -->
+    <section class="hero gridSection">
+        <div class="sectionDesc">
+            <h1 class="headline">
+                <span class="Texton">LoanyLiant</span><br>Most popular way to predict <span class="Texton">LOAN ELIGIBILITY</span>.
+            </h1>
+            <p class="sub-headline">
+                You can check your loan eligibility 
+                anytime you want and never have to worry about 
+                time consume waiting in bank!
+            </p>
+            <div class="btnContainer">
+                <a href="{{ url_for('loan_predictor') }}" class="btn btn1">PREDICT ELIGIBILITY</a>
+                <button class="btn btn2">Login <i class="fa-solid fa-play"></i></button>
+                <button class="btn btn2">Register now <i class="fa-solid fa-play"></i></button>
+            </div>            
+        </div>
+        <div class="sectionPic bouncepic" id="sectionPic">
+            <img src="{{ url_for('static', filename='img/phone1.svg') }}" alt="">
+        </div>
+    </section>
+
+    <!-- Feature -->
+<section>
+    <div class="FeatureContainer">
+        <div class="eachFeature">
+            <img src="{{ url_for('static', filename='img/s1s.svg') }}" alt="">
+            <article class="FeatureDesc">
+                <h1 class="FeatureTitle">Exchange Rate</h1>
+                <p class="FeaturePara">Check for currency exchange rate to get a better insight every day.</p>
+                <button class="btn FeatureBtn">Check Others</button>
+            </article>
+        </div>
+
+        <div class="eachFeature">
+            <img src="{{ url_for('static', filename='img/s2s.svg') }}" alt="">
+            <article class="FeatureDesc">
+                <h1 class="FeatureTitle">Payment Solution</h1>
+                <p class="FeaturePara">Offer a variety of payment digital solutions that speed up payments.</p>
+                <button class="btn FeatureBtn">Check Others</button>
+            </article>
+        </div>
+
+        <div class="eachFeature">
+            <img src="{{ url_for('static', filename='img/s3s.svg') }}" alt="">
+            <article class="FeatureDesc">
+                <h1 class="FeatureTitle">Client Service</h1>
+                <p class="FeaturePara">Reach out for better consultation on your financial.</p>
+                <button class="btn FeatureBtn">Check Others</button>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Processes -->
+    <section class="gridSection">
+        <div class="sectionDesc processessDesc">
+            <h1 class="sectionHeader">LoanyLiant Process</h1>
+            <p class="sectionPara">We do not charge any fees and we do not require 
+              any registration. You keep your privacy.
+            </p>
+            <div class="eachProcesses">
+                <img src="{{ url_for('static', filename='img/handshake-icon-white-line.svg') }}" alt="handshake">
+                <div class="eachprocessesPara">
+                    <h1 class="processTitle">Loan Guide 2024</h1>
+                    <p>
+                        The rules and regulation of loan from bank and other financial institution change every year.
+                        Keep your information updates.
+                    </p>
+                </div>
+            </div>
+            <div class="eachProcesses">
+                <img src="{{ url_for('static', filename='img/cart-icon-white-line.svg') }}" alt="handshake">
+                <div class="eachprocessesPara">
+                    <h1 class="processTitle">Loan Type</h1>
+                    <p>
+                        Best to know all the general loan type for future reference.
+                        the better you know the better you can plan.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="sectionPic bouncepic processesPic" id="sectionPic">
+            <img src="{{ url_for('static', filename='img/budget-block1.svg') }}" alt="">
+        </div>
+    </section>
+
+    <footer>
+        <div class="joinSection">
+            <div class="joinDesc">
+                <h1 class="sectionHeader">Join with us</h1>
+                <p class="sectionPara">
+                    Once you have created your account, you can have access to all the features of LoanyLiant.
+                </p>
+            </div>
+            <button class="btn primaryBtn">JOIN NOW</button>
+        </div>
+
+        <div class="footerlinksContainer">
+            <div class="footerAboutus">
+                <img src="{{ url_for('static', filename='img/icon.svg') }}" alt="">
+                <p class="darkPara">  LoanyLiant
+                </p>
+                <div class="footersociallinkContainer">
+                    <img src="{{ url_for('static', filename='img/fabook-icon-white.svg') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/twitter-icon-white.svg') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/inkedin-icon-white.svg') }}" alt="">
+                    <img src="{{ url_for('static', filename='img/whatsapp-icon-white.svg') }}" alt="">
+                </div>
+            </div>
+
+            <div class="footerlink">
+                <h1 class="linkTitle">Explore</h1>
+                <a href="#" class="eachLink">About us</a>
+                <a href="#" class="eachLink">FAQ</a>
+                <a href="#" class="eachLink">Blog</a>
+                <a href="#" class="eachLink">Contact</a>
+            </div>
+
+            <div class="footerlink">
+                <h1 class="linkTitle">Service</h1>
+                <a href="#" class="eachLink">Mining</a>
+                <a href="#" class="eachLink">Control Data</a>
+                <a href="#" class="eachLink">Design</a>
+                <a href="#" class="eachLink">Security</a>
+            </div>
+
+            <div class="footerlink">
+                <h1 class="linkTitle">Resource</h1>
+                <a href="#" class="eachLink">Style Guide</a>
+                <a href="#" class="eachLink">Change Log</a>
+                <a href="#" class="eachLink">License</a>
+            </div>
+        </div>
+
+        <div class="footerCopyright">
+             <p>&copy; 2024 design and developed by <a href="#" class="developedBy">Lee Zhen-Hong</a>.</p>
+        </div>
+    </footer>
+    
+
+</body>
+</html>

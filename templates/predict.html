@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LoanyLiant: Loan Eligibility Predictor</title>
+        
+        <!-- Add the favicon link here -->
+        <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}" type="image/svg+xml">
+    
+        <!-- Include Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+            --button-bg: rgba(52, 152, 219, 0.7);
+            --button-text: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --accent-color: #3498db;
+        }
+        .dark-mode {
+            --bg-color: rgba(0, 0, 0, 0.3);
+            --text-color: #ffffff;
+            --button-bg: rgba(231, 76, 60, 0.7);
+            --button-text: #ffffff;
+            --glass-bg: rgba(0, 0, 0, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-color: #e74c3c;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            transition: all 0.3s ease;
+        }
+        h1, h2 {
+            color: var(--text-color);
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        form, #result {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+        select {
+            height: auto;
+            overflow-y: auto;
+        }
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: block;
+            margin: 30px auto 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        #result {
+            margin-top: 40px;
+            {% if result %}
+            display: block;
+            {% else %}
+            display: none;
+            {% endif %}
+        }
+        .mode-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .mode-switch input {
+            display: none;
+        }
+        .mode-switch label {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="mode-switch">
+        <input type="checkbox" id="darkModeToggle">
+        <label for="darkModeToggle">Dark Mode</label>
+    </div>
+
+    <h1>LoanyLiant</h1>
+    <h2>Loan Eligibility Predictor</h2>
+    <form id="loanForm" method="post">
+        <div class="form-group">
+            <label for="saving_amount">Savings Amount ($)</label>
+            <input type="number" id="saving_amount" name="saving_amount" required min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="checking_amount">Checking Amount ($)</label>
+            <input type="number" id="checking_amount" name="checking_amount" required min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="yearly_salary">Yearly Salary ($)</label>
+            <input type="number" id="yearly_salary" name="yearly_salary" required min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="total_credit_card_limit">Total Credit Card Limit ($)</label>
+            <input type="number" id="total_credit_card_limit" name="total_credit_card_limit" required min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="currently_repaying_other_loans">Currently Repaying Other Loans?</label>
+            <select id="currently_repaying_other_loans" name="currently_repaying_other_loans" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="is_employed">Are you employed?</label>
+            <select id="is_employed" name="is_employed" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="avg_percentage_credit_card_limit_used_last_year">Avg. Credit Card Limit Used Last Year (%)</label>
+            <input type="number" id="avg_percentage_credit_card_limit_used_last_year" name="avg_percentage_credit_card_limit_used_last_year" required min="0" max="100">
+        </div>
+
+        <div class="form-group">
+            <label for="dependent_number">Number of Dependents</label>
+            <input type="number" id="dependent_number" name="dependent_number" required min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required min="18" max="120">
+        </div>
+
+        <div class="form-group">
+            <label for="loan_purpose_cat">Purpose of the Loan</label>
+            <select id="loan_purpose_cat" name="loan_purpose_cat" required>
+                <option value="business">Business</option>
+                <option value="emergency_funds">Emergency Funds</option>
+                <option value="home">Home</option>
+                <option value="investment">Investment</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fully_repaid_previous_loans">Fully Repaid Previous Loans?</label>
+            <select id="fully_repaid_previous_loans" name="fully_repaid_previous_loans" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="result">
+        <h2>Loan Prediction Result</h2>
+        <p id="prediction">
+            {% if result %}
+                Loan Prediction: {{ result }}
+            {% endif %}
+        </p>
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
+

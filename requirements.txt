@@ -4,3 +4,4 @@ pandas
 scikit_learn
 streamlit
 gunicorn
+Flask

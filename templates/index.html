@@ -503,9 +503,9 @@ footer{
             </p>
             <div class="btnContainer">
                 <a href="{{ url_for('loan_predictor') }}" class="btn btn1">PREDICT ELIGIBILITY</a>
-                <button class="btn btn2">Login <i class="fa-solid fa-play"></i></button>
-                <button class="btn btn2">Register now <i class="fa-solid fa-play"></i></button>
-            </div>            
+                <a href="{{ url_for('login') }}" class="btn btn2">Login <i class="fa-solid fa-play"></i></a>
+                <a href="{{ url_for('login') }}" class="btn btn2">Register now <i class="fa-solid fa-play"></i></a>
+            </div>        
         </div>
         <div class="sectionPic bouncepic" id="sectionPic">
             <img src="{{ url_for('static', filename='img/phone1.svg') }}" alt="">

@@ -23,14 +23,14 @@ def encode_loan_purpose(loan_purpose):
         'investment': 3,
         'other': 4
     }
-    return loan_purpose_map[loan_purpose]
+    return loan_purpose_map.get(loan_purpose, -1)
 
-# Route for the home page
+# Route for the home page (index.html)
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Route for the loan prediction page
+# Route for the loan prediction page (predict.html)
 @app.route('/loan_predictor', methods=['GET', 'POST'])
 def loan_predictor():
     if request.method == 'POST':
@@ -76,5 +76,14 @@ def loan_predictor():
     
     return render_template('predict.html')
 
+# Route for the login page (login.html)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Redirect to loan predictor (predict.html) after login/register
+        return redirect(url_for('loan_predictor'))
+    return render_template('login.html')
+
+# Start the Flask application
 if __name__ == '__main__':
     app.run(debug=True)
